@@ -10,7 +10,6 @@ grades[4] = sum(grades[4]) / len(grades[4])
 students = sorted(students)
 
 students_lst = list(students)
-print(students_lst)
 
 dct_ = dict(zip(students_lst, grades))
 print(dct_)
