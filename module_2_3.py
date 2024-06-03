@@ -5,7 +5,9 @@ count = 0
 while count < len(my_list):
     print(my_list[count])
     count += 1
-    if my_list[count] >= 1:
+    if my_list[count] >= 0:
         continue
-    elif my_list[count] < 1:
+    elif my_list[count] == 0:
+        del my_list[count]
+    elif my_list[count] < 0:
         break
