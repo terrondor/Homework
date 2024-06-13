@@ -21,7 +21,7 @@ def print_params(**kwargs):
 print_params(**value_dict)
 
 
-def print_params(*args):
+def print_params(*args):                 # Можно так или нужно было через функцию сделать , немного не понял?
     print(*args)
 
 
