@@ -1,7 +1,8 @@
 class Animal:
-    def __init__(self, name):
-        self.alive = True
-        self.fed = False
+
+    def __init__(self, name, alive=True, fed=False):
+        self.alive = alive
+        self.fed = fed
         self.name = name
 
     def eat(self, food):
@@ -14,8 +15,9 @@ class Animal:
 
 
 class Plant:
-    def __init__(self, name):
-        self.edible = False
+
+    def __init__(self, name, edible=False):
+        self.edible = edible
         self.name = name
 
 
@@ -42,18 +44,14 @@ a2 = Mammal('Хатико')
 p1 = Flower('Цветик семицветик')
 p2 = Fruit('Заводной апельсин')
 
-# Выводим имена объектов
 print(a1.name)
 print(p1.name)
 
-# Проверяем начальные состояния
 print(a1.alive)
 print(a2.fed)
 
-# Животные пытаются съесть растения
 a1.eat(p1)
 a2.eat(p2)
 
-# Проверяем состояния после попытки поесть
 print(a1.alive)
 print(a2.fed)
