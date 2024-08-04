@@ -12,17 +12,19 @@ def calc(line):
         print(f'Результат: {operand_1 * operand_2}')
     if operation == '%':
         print(f'Результат: {operand_1 % operand_2}')
+    if operation == '/':
+        print(f'Результат: {operand_1 / operand_2}')
 
 
 count = 0
 
-with open('Data.txt', 'r') as file:
+with open('data.txt', 'r') as file:
     for line in file:
         count += 1
         try:
             calc(line)
         except ValueError as exc:
             if 'unpack' in exc.args[0]:
-                print(f'Ошибка в линии {count}, не хватает данных для ответа.')
+                print(f'Ошибка в линии {count}, не хватает данных для ответ.')
             else:
                 print(f'Ошибка в линии {count}, нельзя перевести в число.')
