@@ -8,11 +8,13 @@ def add_everything_up(a, b):
                 isinstance(a, str) and isinstance(b, (int, float))):
             return str(a) + str(b)
         else:
-            raise TypeError("Unsupported types")
-    except TypeError:
+
+            return a + b
+    except:
         return str(a) + str(b)
 
 
-print(add_everything_up(123.456, 'строка'))
-print(add_everything_up('яблоко', 4215))
-print(add_everything_up(123.456, 7))
+print(add_everything_up(123.456, 'строка'))  # Вывод: '123.456строка'
+print(add_everything_up('яблоко', 4215))  # Вывод: 'яблоко4215'
+print(add_everything_up(123.456, 7))  # Вывод: 130.456
+print(add_everything_up([1, 2], (3, 4)))  # Вывод: '[1, 2](3, 4)'
