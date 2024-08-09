@@ -79,7 +79,10 @@ class Cube(Figure):
     def __init__(self, color, *sides):
         super().__init__(color, *sides)
         if len(sides) == 1:
-            self.__sides = [sides[0]] * self.sides_count  # 12 одинаковых сторон
+            side_length = sides[0]
+            self._Figure__sides = [side_length] * self.sides_count
+        else:
+            raise ValueError('Cube must have exactly one side length')
 
     def get_volume(self):
         side = self.get_sides()[0]
