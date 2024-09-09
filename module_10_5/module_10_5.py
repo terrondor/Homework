@@ -2,6 +2,8 @@ import time
 import multiprocessing
 import os
 
+
+
 def read_info(name):
     if not os.path.isfile(name):
         print(f'Файл не найден: {name}')
