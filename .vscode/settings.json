@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.autoReplies": {},
+    "python.autoComplete.extraPaths": [],
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": false,
+    "python.analysis.extraPaths": []
+}
