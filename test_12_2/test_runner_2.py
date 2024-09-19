@@ -1,8 +1,7 @@
 import unittest
-from pickle import FALSE
 
 from test_12_2.runner_and_tournament import Runner, Tournament
-from decorator_for_method import skip_if_frozen
+from test_12_3.decorator_for_method import skip_if_frozen
 
 
 class TournamentTest(unittest.TestCase):
