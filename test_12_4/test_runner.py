@@ -8,7 +8,7 @@ class RunnerTest(unittest.TestCase):
 
     def test_walk(self):
         try:
-            runner = Runner("Тест", speed=-10)  # Попытка создать бегуна со скоростью -10
+            runner = Runner("Тест", speed=-10)
         except ValueError:
             logging.warning("Неверная скорость для Runner")
         else:
@@ -17,7 +17,7 @@ class RunnerTest(unittest.TestCase):
 
     def test_run(self):
         try:
-            runner = Runner(123, 5)  # Попытка создать бегуна с именем не строкой
+            runner = Runner(123, 5)
         except TypeError:
             logging.warning("Неверный тип данных для объекта Runner")
         else:
