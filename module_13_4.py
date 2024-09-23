@@ -49,3 +49,13 @@ async def send_calories(message, state):
     await message.reply(f"Ваша норма калорий: {bmr} ккал в день.")
 
     await state.finish()
+
+
+# Не по заданию , но хотелось очень добавить чтобы бот показал что вводить сперва
+@dp.message_handler()
+async def all_messages(message):
+    await message.answer("Привет! Я посчитаю норму ваших каллорий в день. Введите '/calories' чтобы начать.")
+
+
+if __name__=="__main__":
+    executor.start_polling(dp, skip_updates=True)
