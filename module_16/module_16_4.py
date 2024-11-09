@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Path, status, Body, HTTPException
 from pydantic import BaseModel
-from typing import List
+
 
 
 app = FastAPI()
@@ -9,17 +9,17 @@ users = []
 
 
 class User(BaseModel):
-    id: int = None
+    id: int
     username: str
     age: int
 
 
 @app.get("/users")
-def get_all_users() -> list:
+def get_all_users() -> list[User]:
     return users
 
 
-@app.post("/user/{username}/{age}")
+@app.post("/user/{username}/{age}", response_model=User)
 def create_user(
         username: str = Path(min_length=1, max_length=15, description="Enter user name:"),
         age: int = Path(ge=1, le=100, description="Enter user age:")) -> User:
@@ -29,24 +29,26 @@ def create_user(
     return user
 
 
-@app.put("/user/{user_id}/{username}/{age}")
+@app.put("/user/{user_id}", response_model=User)
 def update_user(
         user_id: int = Path(ge=1, description="Enter user ID:"),
         username: str = Path(min_length=1, max_length=15, description="Enter user name:"),
         age: int = Path(ge=1, le=100, description="Enter user age:")
 ) -> User:
-    if 0 < user_id <= len(users):
-        users[user_id - 1].username = username
-        users[user_id - 1].age = age
-        return users[user_id - 1]
+    user = next((u for u in users if u.id == user_id), None)
+    if user is not None:
+        user.username = username
+        user.age = age
+        return user
     else:
         raise HTTPException(status_code=404, detail="User not found")
 
 
-@app.delete("/users/{user_id}")
+@app.delete("/users/{user_id}", response_model=User)
 def delete_user(user_id: int) -> User:
-    if 0 < user_id <= len(users):
-        deleted_user = users.pop(user_id - 1)
-        return deleted_user
+    user = next((u for u in users if u.id == user_id), None)
+    if user is not None:
+        users.remove(user)
+        return user
     else:
         raise HTTPException(status_code=404, detail="User not found")
